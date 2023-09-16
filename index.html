@@ -13,15 +13,12 @@
             color: black;
         }
 
-        /* Common styles for both desktop and mobile */
         #header {
             position: absolute;
             top: 80px;
             left: 5px;
             font-size: 7px;
             font-weight: 450;
-        }
-
         }
 
         #image-container {
@@ -59,11 +56,13 @@
 
         #content {
             position: absolute;
-            top: 590px;
+            top: 45%; /* Adjusted to 45% */
             left: 30px;
             font-size: 10px;
             text-align: justify;
-            width: calc(100% - 940px);
+            width: calc(100% - 60px); /* Adjusted for mobile */
+            max-height: 75%; /* Added max-height for mobile */
+            overflow-y: auto; /* Added overflow-y for scrolling on mobile */
         }
 
         #content p {
@@ -106,25 +105,6 @@
         #main-content {
             display: none;
         }
-        /* Styles for desktop */
-        @media (min-width: 768px) {
-            #image-container, #video-container, #content {
-                position: absolute;
-                top: 80px;
-                width: 500px;
-                margin: 0 auto;
-            }
-        }
-
-        /* Styles for mobile */
-        @media (max-width: 767px) {
-            #image-container, #video-container, #content {
-                position: static;
-                width: 75%;
-            }
-        }
-
-        /* Rest of your styles... */
 
     </style>
 </head>
