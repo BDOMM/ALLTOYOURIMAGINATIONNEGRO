@@ -13,12 +13,15 @@
             color: black;
         }
 
+        /* Common styles for both desktop and mobile */
         #header {
             position: absolute;
             top: 80px;
             left: 5px;
             font-size: 7px;
             font-weight: 450;
+        }
+
         }
 
         #image-container {
@@ -82,31 +85,77 @@
             opacity: 0; /* Initially hide the arrow button */
             transition: opacity 1s; /* Add opacity transition for the button */
         }
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        #loading-text {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        #main-content {
+            display: none;
+        }
+        /* Styles for desktop */
+        @media (min-width: 768px) {
+            #image-container, #video-container, #content {
+                position: absolute;
+                top: 80px;
+                width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Styles for mobile */
+        @media (max-width: 767px) {
+            #image-container, #video-container, #content {
+                position: static;
+                width: 100%;
+            }
+        }
+
+        /* Rest of your styles... */
+
     </style>
 </head>
 <body>
-    <div id="header">DOM</div>
-    <div id="image-container">
-        <img id="image" src="BK1.png" alt="Image Description">
+    <div id="loading-screen">
+        <div id="loading-text">ALL TO YOUR IMAGINATION N*GRO</div>
     </div>
-    <div id="video-container">
-        <video id="video" controls width="500" onended="fadeOutVideo()" onplay="fadeInImage()">
-            <source src="ALLTOYOURIMAGINATIONNEGRO.mp4" type="video/mp4" />
-        </video>
-    </div>
+    <div id="main-content">
+        <div id="header">DOM</div>
+        <div id="image-container">
+            <img id="image" src="BK1.png" alt="Image Description">
+        </div>
+        <div id="video-container">
+            <video id="video" controls width="500" onended="fadeOutVideo()" onplay="fadeInImage()">
+                <source src="ALLTOYOURIMAGINATIONNEGRO.mp4" type="video/mp4" />
+            </video>
+        </div>
 
-    <div id="content">
-        <p><p>ALL TO YOUR IMAGINATION N*GRO (2023)</p>
-        <br />
-            <em>ALL TO YOUR IMAGINATION N*GRO</em> is a presentation attempting to depict the profound mental impact of racial inequality, with a particular focus on immigration disparities, the presentation delves into the emotional turmoil endured by Black people when their experiences of racism are dismissed as mere imagination.
-            The unconventional movements, such as tensing and adjusting trousers, serve as a poignant representation of trauma's enduring effects and the coping mechanisms it necessitates and high expectation to be cordial while experiencing racially fabricated hardship.
-        </br>
-        <br/></p>
-        <p>
-            This visual narrative transcends the realm of immigration inequality, extending its message to encompass all aspects of life where Black people encounter racism and face ostracisation and gaslighting from those who deny their experiences “It’s all in your imagination negro”. The presentation captures the disorienting journey of a person striving to cope and move forward after enduring racial trauma.
-        </p>
+        <div id="content">
+            <p><p>ALL TO YOUR IMAGINATION N*GRO (2023)</p>
+            <br />
+                <em>ALL TO YOUR IMAGINATION N*GRO</em> is a presentation attempting to depict the profound mental impact of racial inequality, with a particular focus on immigration disparities, the presentation delves into the emotional turmoil endured by Black people when their experiences of racism are dismissed as mere imagination.
+                The unconventional movements, such as tensing and adjusting trousers, serve as a poignant representation of trauma's enduring effects and the coping mechanisms it necessitates and high expectation to be cordial while experiencing racially fabricated hardship.
+            </br>
+            <br/></p>
+            <p>
+                This visual narrative transcends the realm of immigration inequality, extending its message to encompass all aspects of life where Black people encounter racism and face ostracisation and gaslighting from those who deny their experiences “It’s all in your imagination negro”. The presentation captures the disorienting journey of a person striving to cope and move forward after enduring racial trauma.
+            </p>
+        </div>
+        <div id="next-image" onclick="toggleImage()">⇌</div>
     </div>
-    <div id="next-image" onclick="toggleImage()">⇌</div>
 
     <script>
         var images = ["BK1.png", "BK2.png"]; // Add your image URLs here
@@ -115,15 +164,15 @@
         function toggleImage() {
             var image = document.getElementById("image");
             var videoContainer = document.getElementById("video-container");
-            
+
             // Hide the video container
             videoContainer.style.transition = "opacity 1s";
             videoContainer.style.opacity = "0";
-            
+
             setTimeout(function () {
                 currentImageIndex = (currentImageIndex + 1) % images.length;
                 image.src = images[currentImageIndex];
-                
+
                 // Gradually fade in the image
                 setTimeout(function () {
                     image.style.transition = "opacity 1s";
@@ -134,7 +183,7 @@
 
         function fadeInImage() {
             var image = document.getElementById("image");
-            
+
             // Fade in the image
             image.style.transition = "opacity 1s";
             image.style.opacity = "1";
@@ -142,10 +191,10 @@
 
         function fadeOutVideo() {
             var video = document.getElementById("video");
-            
+
             video.style.transition = "opacity 1s";
             video.style.opacity = "0";
-            
+
             setTimeout(function () {
                 video.style.display = "none";
                 var nextImageButton = document.getElementById("next-image");
@@ -153,6 +202,23 @@
                 nextImageButton.style.opacity = "1"; // Fade in the arrow button
             }, 1000); // 1000ms (1 second) delay before hiding the video container
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Delay for 3 seconds (3000ms) before fading out the loading screen
+            setTimeout(function() {
+                var loadingScreen = document.getElementById("loading-screen");
+                loadingScreen.style.transition = "opacity 1s";
+                loadingScreen.style.opacity = "0";
+
+                // After fading out, hide the loading screen and show the main content
+                setTimeout(function() {
+                    loadingScreen.style.display = "none";
+                    var mainContent = document.getElementById("main-content");
+                    mainContent.style.display = "block";
+                }, 1000); // 1000ms (1 second) delay after fading out
+            }, 3000); // 3000ms (3 seconds) delay before fading out
+        });
+
     </script>
 </body>
 </html>
