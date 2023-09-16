@@ -14,73 +14,29 @@
         }
 
         #header {
-            position: absolute;
-            top: 80px;
-            left: 5px;
-            font-size: 7px;
+            font-size: 18px; /* Increase font size for better readability on mobile */
             font-weight: 450;
+            text-align: center; /* Center align header text */
+            padding: 10px; /* Add some padding for better spacing on mobile */
         }
 
-        #image-container {
-            position: absolute;
-            top: 80px;
-            left: 30px;
-            width: 500px;
-            height: 500px;
-            overflow: hidden;
-        }
-
-        #image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 1s; /* Add opacity transition for the image */
-            opacity: 0; /* Initially hide the image */
-        }
-
-        #video-container {
-            position: absolute;
-            top: 80px;
-            left: 30px;
-            width: 500px;
-            height: 500px;
-            overflow: hidden;
-        }
-
-        #video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 1s;
+        #image-container, #video-container {
+            width: 100%; /* Make the containers full-width on mobile */
+            max-width: 100%; /* Ensure the images and videos don't exceed screen width */
+            height: auto; /* Allow the height to adjust based on the aspect ratio */
         }
 
         #content {
-            position: absolute;
-            top: 590px;
-            left: 30px;
-            font-size: 10px;
+            font-size: 14px; /* Increase font size for better readability on mobile */
             text-align: justify;
-            width: calc(100% - 940px);
-        }
-
-        #content p {
-            margin: 0;
-            padding: 0;
-            line-height: 1.3;
-        }
-
-        #content em {
-            font-style: italic;
+            padding: 10px; /* Add some padding for better spacing on mobile */
         }
 
         #next-image {
-            position: absolute;
-            top: 40%;
-            right: 880px;
-            font-size: 15px;
+            font-size: 20px; /* Increase font size for better touch usability on mobile */
+            text-align: center; /* Center align the button */
+            padding: 10px; /* Add some padding for better spacing on mobile */
             cursor: pointer;
-            opacity: 0; /* Initially hide the arrow button */
-            transition: opacity 1s; /* Add opacity transition for the button */
         }
     </style>
 </head>
@@ -90,18 +46,17 @@
         <img id="image" src="BK1.png" alt="Image Description">
     </div>
     <div id="video-container">
-        <video id="video" controls width="500" onended="fadeOutVideo()" onplay="fadeInImage()">
+        <video id="video" controls width="100%" onended="fadeOutVideo()" onplay="fadeInImage()">
             <source src="ALLTOYOURIMAGINATIONNEGRO.mp4" type="video/mp4" />
         </video>
     </div>
 
     <div id="content">
-        <p><p>ALL TO YOUR IMAGINATION N*GRO (2023)</p>
-        <br />
+        <p>ALL TO YOUR IMAGINATION N*GRO (2023)</p>
+        <p>
             <em>ALL TO YOUR IMAGINATION N*GRO</em> is a presentation attempting to depict the profound mental impact of racial inequality, with a particular focus on immigration disparities, the presentation delves into the emotional turmoil endured by Black people when their experiences of racism are dismissed as mere imagination.
             The unconventional movements, such as tensing and adjusting trousers, serve as a poignant representation of trauma's enduring effects and the coping mechanisms it necessitates and high expectation to be cordial while experiencing racially fabricated hardship.
-        </br>
-        <br/></p>
+        </p>
         <p>
             This visual narrative transcends the realm of immigration inequality, extending its message to encompass all aspects of life where Black people encounter racism and face ostracisation and gaslighting from those who deny their experiences “It’s all in your imagination negro”. The presentation captures the disorienting journey of a person striving to cope and move forward after enduring racial trauma.
         </p>
