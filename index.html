@@ -60,9 +60,7 @@
             left: 30px;
             font-size: 10px;
             text-align: justify;
-            width: calc(100% - 60px); /* Adjusted for mobile */
-            max-height: 75%; /* Added max-height for mobile */
-            overflow-y: auto; /* Added overflow-y for scrolling on mobile */
+            width: calc(100% - 940px);
         }
 
         #content p {
@@ -106,13 +104,6 @@
             display: none;
         }
 
-        @media (max-width: 768px) {
-            /* Apply styles only on screens with a maximum width of 768px (typical mobile devices) */
-            #image-container, #video-container, #content {
-                width: 75%;
-                left: 12.5%;
-            }
-        }
     </style>
 </head>
 <body>
